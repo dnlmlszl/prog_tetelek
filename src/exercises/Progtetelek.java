@@ -1,8 +1,9 @@
 package exercises;
 
 import java.util.Arrays;
-
+import java.util.Random;
 public class Progtetelek {
+    static Random random = new Random();
     private static int[] numbers = new int[6];
     public static void main(String[] args) {
         feladatok();
@@ -10,7 +11,7 @@ public class Progtetelek {
     }
 
     private static void feladatok() {
-        numbers = new int[]{-3, 5, 8, 9, 11, -7};
+        numbers = generateArray(8, -999, 999);
 
         int sum = osszegzes(numbers);
         konzolrair("Osszeg:" + sum);
@@ -38,6 +39,15 @@ public class Progtetelek {
 
         int[] copy = masolas(numbers);
         konzolrair("A másolt tömb: " + Arrays.toString(copy));
+    }
+
+    private static int[] generateArray(int size, int min, int max) {
+        int[] array = new int[size];
+
+        for (int i = 0; i < size; i++) {
+            array[i] = random.nextInt(max - min +1) + min;
+        }
+        return array;
     }
 
     private static void konzolrair(String text) {
@@ -79,7 +89,9 @@ public class Progtetelek {
 
     private static int kivalasztas(int[] array) {
         for (int num: array) {
-            if (num > 0) {return num;}
+            if (num > 0) {
+                return num;
+            }
         }
         return 0;
     }
