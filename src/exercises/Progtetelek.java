@@ -11,32 +11,84 @@ public class Progtetelek {
 
     private static void feladatok() {
 
-        int sum = osszegzes(numbers);
-        konzolrair("Osszeg:" + sum);
+        osszegzesBemutatasa();
 
-        int count = megszamlalas(numbers);
-        konzolrair("Pozitiv szamok szama: " + count);
+        megszamlalasBemutatasa();
 
-        boolean found = eldontesEgy(numbers, 5);
-        konzolrair("A tömb tartalmazza a 5-öt: " + found);
+        eldontesEgyBemutatasa();
 
-        boolean allPositive = eldontesMind(numbers);
-        konzolrair("A tömb összes eleme pozitív: " + allPositive);
+        eldontesMindBemutatasa();
 
-        int firstPositive = kivalasztas(numbers);
-        konzolrair("Az első pozitív szám: " + firstPositive);
+        kivalasztasBemutatasa();
 
-        int max = kivalasztasMaximum(numbers);
-        konzolrair("A tömb legnagyobb eleme: " + max);
+        kivalasztasMaxBemutatasa();
 
-        int min = kivalasztasMinimum(numbers);
-        konzolrair("A tömb legkisebb eleme: " + min);
+        kivalasztasMinBemutatasa();
 
-        int index = kereses(numbers, 9);
-        konzolrair("Az 9-es szám indexe: " + index);
+        keresesBemutatasa();
 
+        masolasBemutatasa();
+    }
+
+    private static void masolasBemutatasa() {
+        konzolrair("A másolt tömb: ");
         int[] copy = masolas(numbers);
-        konzolrair("A másolt tömb: " + Arrays.toString(copy));
+        konzolrair(Arrays.toString(copy));
+    }
+
+    private static void keresesBemutatasa() {
+        konzolrair("Az 9-es szám indexe: ");
+        int index = kereses(numbers, 9);
+        if (index != 0) {
+            konzolrair(String.valueOf(index));
+        } else {
+            konzolrair("Nem található az 9-es szám a tömbben.");
+        }
+    }
+
+    private static void kivalasztasMinBemutatasa() {
+        konzolrair("A tömb legkisebb eleme: ");
+        int min = kivalasztasMinimum(numbers);
+        konzolrair(String.valueOf(min));
+    }
+
+    private static void kivalasztasMaxBemutatasa() {
+        konzolrair("A tömb legnagyobb eleme: ");
+        int max = kivalasztasMaximum(numbers);
+        konzolrair(String.valueOf(max));
+    }
+
+    private static void kivalasztasBemutatasa() {
+        konzolrair("Az első pozitív szám: ");
+        int firstPositive = kivalasztas(numbers);
+        konzolrair(String.valueOf(firstPositive));
+    }
+
+    private static void eldontesMindBemutatasa() {
+        konzolrair("A tömb összes eleme pozitív: ");
+        boolean allPositive = eldontesMind(numbers);
+        konzolrair(String.valueOf(allPositive));
+    }
+
+    private static void eldontesEgyBemutatasa() {
+        konzolrair("A tömb tartalmazza a 5-öt: ");
+        boolean found = eldontesEgy(numbers, 5);
+        konzolrair(String.valueOf(found));
+    }
+
+    private static void megszamlalasBemutatasa() {
+        int count = megszamlalas(numbers);
+        konzolrair("Pozitiv szamok szama: ");
+        konzolrair(String.valueOf(count));
+    }
+
+    private static void osszegzesBemutatasa() {
+        konzolrair("Sorozat osszege: ");
+        int sum = osszegzes(numbers);
+        konzolrair(String.valueOf(sum));
+        konzolrair("Sorozat atlaga: ");
+        double atlag = (double) osszegzes(numbers) / megszamlalas(numbers);
+        konzolrair(String.valueOf(atlag));
     }
 
     private static int[] generateArray(int size, int min, int max) {
