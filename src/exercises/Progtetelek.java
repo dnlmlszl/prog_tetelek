@@ -4,14 +4,12 @@ import java.util.Arrays;
 import java.util.Random;
 public class Progtetelek {
     static Random random = new Random();
-    private static int[] numbers = new int[6];
+    private static final int[] numbers = generateArray(8, -999, 999);
     public static void main(String[] args) {
         feladatok();
-
     }
 
     private static void feladatok() {
-        numbers = generateArray(8, -999, 999);
 
         int sum = osszegzes(numbers);
         konzolrair("Osszeg:" + sum);
