@@ -1,5 +1,7 @@
 package exercises;
 
+import java.util.Arrays;
+
 public class Progtetelek {
     private static int[] numbers = new int[6];
     public static void main(String[] args) {
@@ -18,6 +20,24 @@ public class Progtetelek {
 
         boolean found = eldontesEgy(numbers, 5);
         konzolrair("A tömb tartalmazza a 5-öt: " + found);
+
+        boolean allPositive = eldontesMind(numbers);
+        konzolrair("A tömb összes eleme pozitív: " + allPositive);
+
+        int firstPositive = kivalasztas(numbers);
+        konzolrair("Az első pozitív szám: " + firstPositive);
+
+        int max = kivalasztasMaximum(numbers);
+        konzolrair("A tömb legnagyobb eleme: " + max);
+
+        int min = kivalasztasMinimum(numbers);
+        konzolrair("A tömb legkisebb eleme: " + min);
+
+        int index = kereses(numbers, 9);
+        konzolrair("Az 9-es szám indexe: " + index);
+
+        int[] copy = masolas(numbers);
+        konzolrair("A másolt tömb: " + Arrays.toString(copy));
     }
 
     private static void konzolrair(String text) {
@@ -50,26 +70,53 @@ public class Progtetelek {
         return false;
     }
 
-    private static boolean eldontesMind() {
-        return false;
+    private static boolean eldontesMind(int[] array) {
+        for (int num: array) {
+            if (num <= 0) return false;
+        }
+        return true;
     }
 
-    private static int kivalasztas() {
+    private static int kivalasztas(int[] array) {
+        for (int num: array) {
+            if (num > 0) {return num;}
+        }
         return 0;
     }
-    private static int kivalasztasMaximum() {
-        return 0;
+    private static int kivalasztasMaximum(int[] array) {
+        int max = array[0];
+        for (int num: array) {
+            if (num > max) {
+                max = num;
+            }
+        }
+        return max;
     }
-    private static int kivalasztasMinimum() {
-        return 0;
+    private static int kivalasztasMinimum(int[] array) {
+        int min = 0;
+        for (int num: array) {
+            if (num < min) {
+                min = num;
+            }
+        }
+        return min;
     }
 
-    private static int kereses() {
+    private static int kereses(int[] array, int value) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == value) {
+                return i;
+            }
+        }
         return 0;
     }
 
 
     private static int[] masolas(int[] array) {
-        return array;
+        int[] copy = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            copy[i] = array[i];
+        }
+        return copy;
     }
 }
