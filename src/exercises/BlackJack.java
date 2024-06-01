@@ -10,6 +10,10 @@ public class BlackJack {
     static Random random = new Random();
 
     public static void main(String[] args) {
+        ui();
+    }
+
+    private static void ui() {
         List<Integer> playerHand = new ArrayList<>();
         List<Integer> dealerHand = new ArrayList<>();
 
